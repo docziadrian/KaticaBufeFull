@@ -1,0 +1,7 @@
+1. Backend védelem - "kényes" adatokat el kell rejteni.
+Ehhez kell a "dotenv" nevű csomag.
+npm i dotenv
+- Létre kell hozni egy .env fájlt a projekt fő könyvtárában, ahova deklaráljuk a változókat
+- Ahol deklaráltuk az adatbázis kapcsolatot, oda kell a dotenv inicializáció (database.js)
+- process.env.[valtozonev] -el hivatkozunk az adatokra
+- PUSHOLÁSNÁL: nevezd át .env copy -ra (mert a .gitignore -nak tartalmaznia kell a .env -et) és ne valódi adatokat használj feltöltéskor.

@@ -1,0 +1,107 @@
+### Get all customers (distinct vevo names)
+GET http://localhost:3000/vevok
+
+###
+
+### Get customer transactions by vevo name
+GET http://localhost:3000/vevok/Kovacs Janos
+
+###
+
+### Create new transaction with customer
+POST http://localhost:3000/vevok
+Content-Type: application/json
+
+{
+  "termek": "Hotdog",
+  "vevo": "Kovacs Janos",
+  "kategoriaId": 1,
+  "egyseg": "db",
+  "nettoar": 800,
+  "mennyiseg": 2,
+  "kiadva": true
+}
+
+###
+
+### Create another transaction with different customer
+POST http://localhost:3000/vevok
+Content-Type: application/json
+
+{
+  "termek": "Hamburger",
+  "vevo": "Nagy Anna",
+  "kategoriaId": 1,
+  "egyseg": "db",
+  "nettoar": 1200,
+  "mennyiseg": 1,
+  "kiadva": true
+}
+
+###
+
+### Update transaction by ID
+PATCH http://localhost:3000/vevok/1
+Content-Type: application/json
+
+{
+  "termek": "Hotdog Premium",
+  "vevo": "Kovacs Janos",
+  "kategoriaId": 1,
+  "egyseg": "db",
+  "nettoar": 1000,
+  "mennyiseg": 2,
+  "kiadva": true
+}
+
+###
+
+### Update transaction by ID (another example)
+PATCH http://localhost:3000/vevok/2
+Content-Type: application/json
+
+{
+  "termek": "Hamburger Deluxe",
+  "vevo": "Nagy Anna",
+  "kategoriaId": 1,
+  "egyseg": "db",
+  "nettoar": 1500,
+  "mennyiseg": 1,
+  "kiadva": true
+}
+
+###
+
+### Delete transaction by ID
+DELETE http://localhost:3000/vevok/2
+
+###
+
+### Test error - Get customer with invalid vevo name
+GET http://localhost:3000/vevok/
+
+###
+
+### Test error - Create transaction with missing data
+POST http://localhost:3000/vevok
+Content-Type: application/json
+
+{
+  "termek": "Test Product",
+  "vevo": "Test Customer"
+}
+
+###
+
+### Test error - Update transaction with missing data
+PATCH http://localhost:3000/vevok/1
+Content-Type: application/json
+
+{
+  "termek": "Updated Product"
+}
+
+###
+
+### Test error - Delete transaction with invalid ID
+DELETE http://localhost:3000/vevok/

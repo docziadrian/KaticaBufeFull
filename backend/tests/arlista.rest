@@ -1,0 +1,171 @@
+### Get all products (distinct products with total value)
+GET http://localhost:3000/arlista
+
+###
+
+### Get product transactions by product name
+GET http://localhost:3000/arlista/Hotdog
+
+###
+
+### Create new product transaction
+POST http://localhost:3000/arlista
+Content-Type: application/json
+
+{
+  "termek": "Hotdog",
+  "vevo": "Kovacs Janos",
+  "kategoriaId": 1,
+  "egyseg": "db",
+  "nettoar": 800,
+  "mennyiseg": 2,
+  "kiadva": true
+}
+
+###
+
+### Create another product transaction
+POST http://localhost:3000/arlista
+Content-Type: application/json
+
+{
+  "termek": "Hamburger",
+  "vevo": "Nagy Anna",
+  "kategoriaId": 1,
+  "egyseg": "db",
+  "nettoar": 1200,
+  "mennyiseg": 1,
+  "kiadva": true
+}
+
+###
+
+### Create product with high quantity to test total value calculation
+POST http://localhost:3000/arlista
+Content-Type: application/json
+
+{
+  "termek": "Kola",
+  "vevo": "Szabo Peter",
+  "kategoriaId": 2,
+  "egyseg": "db",
+  "nettoar": 300,
+  "mennyiseg": 10,
+  "kiadva": true
+}
+
+###
+
+### Update product transaction by ID
+PATCH http://localhost:3000/arlista/1
+Content-Type: application/json
+
+{
+  "termek": "Hotdog Premium",
+  "vevo": "Kovacs Janos",
+  "kategoriaId": 1,
+  "egyseg": "db",
+  "nettoar": 1000,
+  "mennyiseg": 2,
+  "kiadva": true
+}
+
+###
+
+### Update product transaction by ID (another example)
+PATCH http://localhost:3000/arlista/2
+Content-Type: application/json
+
+{
+  "termek": "Hamburger Deluxe",
+  "vevo": "Nagy Anna",
+  "kategoriaId": 1,
+  "egyseg": "db",
+  "nettoar": 1500,
+  "mennyiseg": 1,
+  "kiadva": true
+}
+
+###
+
+### Update product quantity to test total value calculation
+PATCH http://localhost:3000/arlista/3
+Content-Type: application/json
+
+{
+  "termek": "Kola",
+  "vevo": "Szabo Peter",
+  "kategoriaId": 2,
+  "egyseg": "db",
+  "nettoar": 350,
+  "mennyiseg": 8,
+  "kiadva": true
+}
+
+###
+
+### Delete product transaction by ID
+DELETE http://localhost:3000/arlista/2
+
+###
+
+### Test error - Get product with invalid product name
+GET http://localhost:3000/arlista/
+
+###
+
+### Test error - Create product transaction with missing data
+POST http://localhost:3000/arlista
+Content-Type: application/json
+
+{
+  "termek": "Test Product",
+  "vevo": "Test Customer"
+}
+
+###
+
+### Test error - Update product transaction with missing data
+PATCH http://localhost:3000/arlista/1
+Content-Type: application/json
+
+{
+  "termek": "Updated Product"
+}
+
+###
+
+### Test error - Delete product transaction with invalid ID
+DELETE http://localhost:3000/arlista/
+
+###
+
+### Test edge case - Product transaction with zero quantity
+POST http://localhost:3000/arlista
+Content-Type: application/json
+
+{
+  "termek": "Out of Stock Item",
+  "vevo": "Test Customer",
+  "kategoriaId": 3,
+  "egyseg": "db",
+  "nettoar": 200,
+  "mennyiseg": 0,
+  "kiadva": false
+}
+
+###
+
+### Test edge case - Product transaction with decimal price
+POST http://localhost:3000/arlista
+Content-Type: application/json
+
+{
+  "termek": "Discount Item",
+  "vevo": "Test Customer",
+  "kategoriaId": 2,
+  "egyseg": "db",
+  "nettoar": 99,
+  "mennyiseg": 5,
+  "kiadva": true
+}

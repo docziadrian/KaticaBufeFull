@@ -1,0 +1,50 @@
+<!-- Új termék űrlap -->
+<div class="bg-white rounded-xl shadow-md px-8 py-6 mb-8 max-w-xl mx-auto">
+  <p class="text-base text-slate-700 mb-3">Új termék hozzáadása</p>
+  <div class="flex flex-col space-y-3">
+    <input
+      [(ngModel)]="termekNev"
+      placeholder="Termék név"
+      type="text"
+      class="border-2 border-slate-400 focus:border-red-500 outline-none rounded-lg px-4 py-2"
+    />
+
+    <input
+      [(ngModel)]="kategoriaNev"
+      list="kategoriaList"
+      placeholder="Kategória"
+      type="text"
+      class="border-2 border-slate-400 focus:border-red-500 outline-none rounded-lg px-4 py-2"
+    />
+    <datalist id="kategoriaList">
+      <option *ngFor="let k of kategoriaOptions" [value]="k.kategoriaNev">
+        {{ k.kategoriaNev }}
+      </option>
+    </datalist>
+
+    <input
+      [(ngModel)]="egyseg"
+      placeholder="Egység"
+      type="text"
+      class="border-2 border-slate-400 focus:border-red-500 outline-none rounded-lg px-4 py-2"
+    />
+    <input
+      [(ngModel)]="nettoar"
+      placeholder="Nettó ár"
+      type="number"
+      class="border-2 border-slate-400 focus:border-red-500 outline-none rounded-lg px-4 py-2"
+    />
+    <input
+      [(ngModel)]="mennyiseg"
+      placeholder="Mennyiség"
+      type="number"
+      class="border-2 border-slate-400 focus:border-red-500 outline-none rounded-lg px-4 py-2"
+    />
+    <button
+      class="bg-red-500 text-white px-6 py-2 rounded-lg font-bold shadow-md"
+      (click)="save()"
+    >
+      {{ id ? "Frissítés" : "Hozzáadás" }}
+    </button>
+  </div>
+</div>

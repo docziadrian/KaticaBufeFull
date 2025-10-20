@@ -1,0 +1,50 @@
+<div class="w-full h-full bg-slate-100 mb-24">
+  <h1 class="text-2xl font-bold text-center text-slate-600 py-4">
+    Forgalom kezelése
+  </h1>
+
+  <app-forgalom-felvesz (newForgalom)="getAll()"></app-forgalom-felvesz>
+
+  <div class="text-md">
+    <table class="w-full border-collapse border border-slate-200">
+      <tr class="border-b border-slate-200">
+        <th>ID</th>
+        <th>Termék</th>
+        <th>Vevő</th>
+        <th>Kategória</th>
+        <th>Egység</th>
+        <th>Nettó ár</th>
+        <th>Mennyiség</th>
+        <th>Kiadva</th>
+        <th>Műveletek</th>
+      </tr>
+      <tr
+        class="border-b border-slate-200 text-center"
+        *ngFor="let f of forgalmak"
+      >
+        <td>{{ f.id }}</td>
+        <td>{{ f.termekNev }}</td>
+        <td>{{ f.vevoNev }}</td>
+        <td>{{ f.kategoriaNev }}</td>
+        <td>{{ f.egyseg }}</td>
+        <td>{{ f.nettoar }}</td>
+        <td>{{ f.mennyiseg }}</td>
+        <td>{{ f.kiadva ? "Igen" : "Nem" }}</td>
+        <td class="flex gap-2 justify-center">
+          <button
+            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            (click)="edit(f.id)"
+          >
+            Szerkesztés
+          </button>
+          <button
+            class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+            (click)="delete(f.id)"
+          >
+            Törlés
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

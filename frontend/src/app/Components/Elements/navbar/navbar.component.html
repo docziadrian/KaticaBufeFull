@@ -1,0 +1,49 @@
+<nav class="bg-red-600 px-2 w-full h-16 fixed top-0 left-0 right-0 z-50">
+  <div class="flex justify-between items-center -mt-2">
+    <div class="flex items-center">
+      <img
+        src="https://silmama.hu/intezmenyek/wp-content/uploads/2020/10/katica_duci-200dpi-keret.png"
+        alt="Logo"
+        class="w-20 h-20"
+      />
+      <h1 class="text-2xl font-bold text-white">Katica Büfé</h1>
+    </div>
+    <div class="flex items-center space-x-4">
+      <button
+        [class.bg-yellow-600]="isActive('/kategoria')"
+        class="bg-slate-800 text-white px-4 py-2 rounded-md hover:bg-slate-700"
+        routerLink="/kategoria"
+      >
+        Kategóriák
+      </button>
+      <button
+        [class.bg-yellow-600]="isActive('/forgalom')"
+        class="bg-slate-800 text-white px-4 py-2 rounded-md hover:bg-slate-700"
+        routerLink="/forgalom"
+      >
+        Forgalom
+      </button>
+      <button
+        [class.bg-yellow-600]="isActive('/termek')"
+        class="bg-slate-800 text-white px-4 py-2 rounded-md hover:bg-slate-700"
+        routerLink="/termek"
+      >
+        Termékek
+      </button>
+      <button
+        [class.bg-yellow-600]="isActive('/vevo')"
+        class="bg-slate-800 text-white px-4 py-2 rounded-md hover:bg-slate-700"
+        routerLink="/vevo"
+      >
+        Vevők
+      </button>
+    </div>
+    <div class="flex items-center">
+      <button
+        class="bg-black text-white px-4 py-2 rounded-md hover:bg-slate-700"
+      >
+        Logok
+      </button>
+    </div>
+  </div>
+</nav>

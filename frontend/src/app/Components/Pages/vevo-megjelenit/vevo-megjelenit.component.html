@@ -1,0 +1,35 @@
+<div class="w-full h-full bg-slate-100">
+  <h1 class="text-2xl font-bold text-center text-slate-600 py-4">
+    Vevők kezelése
+  </h1>
+
+  <app-vevo-felvesz (newVevo)="getAll()"></app-vevo-felvesz>
+
+  <div class="text-md">
+    <table class="w-full border-collapse border border-slate-200">
+      <tr class="border-b border-slate-200">
+        <th>ID</th>
+        <th>Név</th>
+        <th>Műveletek</th>
+      </tr>
+      <tr class="border-b border-slate-200 text-center" *ngFor="let v of vevok">
+        <td>{{ v.id }}</td>
+        <td>{{ v.vevoNev }}</td>
+        <td class="flex gap-2 justify-center">
+          <button
+            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            (click)="edit(v.id)"
+          >
+            Szerkesztés
+          </button>
+          <button
+            class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+            (click)="delete(v.id)"
+          >
+            Törlés
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

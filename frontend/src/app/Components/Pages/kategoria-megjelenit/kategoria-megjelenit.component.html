@@ -1,0 +1,81 @@
+<div
+  class="w-full h-full min-h-[90vh] bg-gradient-to-br from-slate-100 to-slate-200 px-4 pb-20"
+>
+  <h1
+    class="text-3xl text-center text-slate-700 py-8 drop-shadow-md tracking-tight"
+  >
+    <span class="border-b-4 border-red-500 pb-2">Kategóriák kezelése</span>
+  </h1>
+
+  <app-kategoria-felvesz
+    (newKategoria)="getAllKategoriak()"
+  ></app-kategoria-felvesz>
+
+  <!-- Kategória lista táblázat -->
+  <div class="bg-white rounded-xl shadow-lg p-6 max-w-3xl mx-auto mb-12">
+    <table class="w-full border-collapse text-slate-700 text-center">
+      <thead>
+        <tr class="border-b-2 border-red-400 bg-red-100">
+          <th class="py-3 px-2 text-left pl-6">ID</th>
+          <th class="py-3 px-2 text-left">Név</th>
+          <th class="py-3 px-2">Műveletek</th>
+        </tr>
+      </thead>
+      <tbody class="">
+        <tr
+          *ngFor="let kategoria of kategoriak"
+          class="hover:bg-slate-100/70 border-b border-slate-200 transition-colors"
+        >
+          <td class="py-4 px-2 pl-6">{{ kategoria.id }}</td>
+          <td class="py-4 px-2">{{ kategoria.kategoriaNev }}</td>
+          <td class="py-4 px-2">
+            <div class="flex gap-2 justify-center">
+              <button
+                class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1.5 rounded-md shadow hover:shadow-lg transition-colors"
+                (click)="editKategoria(kategoria.id)"
+              >
+                <span class="inline-flex items-center gap-1">
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.232 5.232l3.536 3.536M9 11l6.768-6.768a2 2 0 012.828 2.828L11 13.828V17h3.172l6.768-6.768a2 2 0 10-2.828-2.828L9 13.828"
+                    />
+                  </svg>
+                  Szerkesztés
+                </span>
+              </button>
+              <button
+                class="bg-red-500 hover:bg-red-600 text-white px-4 py-1.5 rounded-md shadow hover:shadow-lg transition-colors"
+                (click)="deleteKategoria(kategoria.id)"
+              >
+                <span class="inline-flex items-center gap-1">
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                  Törlés
+                </span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
