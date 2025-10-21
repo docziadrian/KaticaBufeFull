@@ -4,6 +4,7 @@ import { KategoriaMegjelenitComponent } from './Components/Pages/kategoria-megje
 import { TermekMegjelenitComponent } from './Components/Pages/termek-megjelenit/termek-megjelenit.component';
 import { VevoMegjelenitComponent } from './Components/Pages/vevo-megjelenit/vevo-megjelenit.component';
 import { ForgalomMegjelenitComponent } from './Components/Pages/forgalom-megjelenit/forgalom-megjelenit.component';
+import { ArListaComponent } from './Components/Pages/ar-lista/ar-lista.component';
 
 export const routes: Routes = [
   {
@@ -41,5 +42,9 @@ export const routes: Routes = [
   {
     path: 'vevo/:id',
     component: VevoMegjelenitComponent,
+  },
+  {
+    path: 'arlista',
+    component: ArListaComponent,
   },
 ];

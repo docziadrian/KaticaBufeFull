@@ -1,0 +1,29 @@
+<div class="w-full h-full bg-slate-100 mb-24">
+  <h1 class="text-2xl font-bold text-center text-slate-600 py-4">
+    Katica árlista
+  </h1>
+
+  <div class="text-md">
+    <ul
+      class="flex flex-col py-10 px-5 justify-center mx-4 my-2 text-slate-600 font-semibold text-2xl"
+      *ngFor="let item of kategoriak"
+    >
+      <li class="border-b border-slate-300 pb-2">{{ item.kategoriaNev }}</li>
+      <table class="w-full border-collapse border border-slate-200">
+        <tr class="border-b border-slate-200">
+          <th>Név</th>
+          <th>Nettó ár</th>
+        </tr>
+        <ng-container *ngFor="let t of termekek">
+          <tr
+            *ngIf="t.kategoriaNev === item.kategoriaNev"
+            class="border-b border-slate-200 text-center"
+          >
+            <td>{{ t.termekNev }}</td>
+            <td>{{ t.nettoar }} Ft</td>
+          </tr>
+        </ng-container>
+      </table>
+    </ul>
+  </div>
+</div>

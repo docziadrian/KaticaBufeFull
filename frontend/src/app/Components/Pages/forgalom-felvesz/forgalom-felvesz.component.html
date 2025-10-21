@@ -3,6 +3,21 @@
   <p class="text-base text-slate-700 mb-3">Új forgalom hozzáadása</p>
   <div class="flex flex-col space-y-3">
     <input
+      (change)="onKategoriaInput()"
+      [(ngModel)]="kategoriaNev"
+      list="kategoriaList"
+      placeholder="Kategória"
+      type="text"
+      class="border-2 border-slate-400 focus:border-red-500 outline-none rounded-lg px-4 py-2"
+    />
+    <datalist id="kategoriaList">
+      <option *ngFor="let k of kategoriaOptions" [value]="k.kategoriaNev">
+        {{ k.kategoriaNev }}
+      </option>
+    </datalist>
+
+    <input
+      (input)="onTermekInput()"
       [(ngModel)]="termekNev"
       list="termekList"
       placeholder="Termék"
@@ -10,7 +25,7 @@
       class="border-2 border-slate-400 focus:border-red-500 outline-none rounded-lg px-4 py-2"
     />
     <datalist id="termekList">
-      <option *ngFor="let t of termekOptions" [value]="t.termekNev">
+      <option *ngFor="let t of filteredTermekOptions" [value]="t.termekNev">
         {{ t.termekNev }}
       </option>
     </datalist>
@@ -25,19 +40,6 @@
     <datalist id="vevoList">
       <option *ngFor="let v of vevoOptions" [value]="v.vevoNev">
         {{ v.vevoNev }}
-      </option>
-    </datalist>
-
-    <input
-      [(ngModel)]="kategoriaNev"
-      list="kategoriaList"
-      placeholder="Kategória"
-      type="text"
-      class="border-2 border-slate-400 focus:border-red-500 outline-none rounded-lg px-4 py-2"
-    />
-    <datalist id="kategoriaList">
-      <option *ngFor="let k of kategoriaOptions" [value]="k.kategoriaNev">
-        {{ k.kategoriaNev }}
       </option>
     </datalist>
 

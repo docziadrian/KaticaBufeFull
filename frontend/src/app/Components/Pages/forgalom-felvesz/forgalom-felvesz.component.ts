@@ -33,6 +33,8 @@ export class ForgalomFelveszComponent implements OnInit {
   kategoriaOptions: Kategoria[] = [];
   termekOptions: Termek[] = [];
 
+  filteredTermekOptions: Termek[] = [];
+
   @Output() newForgalom = new EventEmitter<Forgalom>();
 
   constructor(
@@ -124,9 +126,26 @@ export class ForgalomFelveszComponent implements OnInit {
     if (found) this.vevoId = found.id;
   }
 
-  onKategoriaInput(val: string): void {
-    const found = this.kategoriaOptions.find((k) => k.kategoriaNev === val);
-    this.kategoriaId = found ? found.id : null;
+  onKategoriaInput(): void {
+    console.log('Eddig jó');
+    console.log('this.kategoriaId: ', this.kategoriaId);
+    this.kategoriaId = this.findKategoriaId(this.kategoriaNev);
+    this.filteredTermekOptions = this.termekOptions.filter(
+      (t) => t.kategoriaId === this.kategoriaId
+    );
+    console.log('Filtered Termek Options: ', this.filteredTermekOptions);
+  }
+
+  onTermekInput(): void {
+    // Find Nettó ár, mennyiség
+    this.termekNev = this.termekNev.trim();
+    const found = this.termekOptions.find(
+      (t) => t.termekNev === this.termekNev
+    );
+    if (found) {
+      this.nettoar = found.nettoar;
+      this.mennyiseg = 1;
+    }
   }
 
   save(): void {
